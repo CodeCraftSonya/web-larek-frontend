@@ -30,9 +30,6 @@ export type TOrderAddress = Pick<IOrder, 'payment' | 'address'>;
 
 export type TOrderContacts = Pick<IOrder, 'email' | 'phone'>;
 
-export type FormErrors = Partial<Record<keyof IOrder, string>>;
+export type TSuccessOrder = Pick<IOrder, 'total'>;
 
-export interface ISuccessOrder {
-	id: string;
-	total: number;
-}
+export type FormErrors = Partial<Record<keyof IOrder, string>>;
