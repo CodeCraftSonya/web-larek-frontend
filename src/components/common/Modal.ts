@@ -29,6 +29,7 @@ export class Modal extends UIComponent<IModalData> {
 	}
 
 	open() {
+		console.log('dksjalajd');
 		this.toggleClass(this.container, 'modal_active', true);
 		this.events.emit('modal:open');
 	}
