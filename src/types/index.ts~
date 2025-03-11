@@ -24,8 +24,6 @@ export interface ICardList {
 
 export type TBasketList = Pick<IOrder, 'items' | 'total'>;
 
-export type TBasketItem = Pick<ICard, 'title' | 'price'>;
-
 export type TOrderAddress = Pick<IOrder, 'payment' | 'address'>;
 
 export type TOrderContacts = Pick<IOrder, 'email' | 'phone'>;
