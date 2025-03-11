@@ -1,7 +1,6 @@
 import { Component } from './base/Component';
 import { ICard } from '../types';
 import { ensureElement } from '../utils/utils';
-import { categories } from '../utils/constants';
 
 interface ICardActions {
 	onClick: (event: MouseEvent) => void;
@@ -62,14 +61,20 @@ export class Card extends Component<ICard> {
 	}
 
 	set category(value: string) {
-		this.setText(this._category, value);
-		if (this._category) {
-			this._category.classList.add(
-				`card__category_${
-					categories.get(value) ? categories.get(value) : 'other'
-				}`
-			);
-		}
+		if (!this._category) return;
+		this._category.className = 'card__category';
+		this._category.textContent = value;
+
+		const categoryClasses: Record<string, string> = {
+			'софт-скил': 'soft',
+			'хард-скил': 'hard',
+			другое: 'other',
+			дополнительное: 'additional',
+			кнопка: 'button',
+		};
+
+		const categoryClass = categoryClasses[value.toLowerCase()] || 'other';
+		this._category.classList.add(`card__category_${categoryClass}`);
 	}
 
 	get category(): string {
