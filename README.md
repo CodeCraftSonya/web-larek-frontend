@@ -45,7 +45,7 @@ yarn build
 Карточка
 
 ```
-export interface ICard {
+interface ICard {
 	id: number;
 	description: string;
 	image: string;
@@ -58,13 +58,13 @@ export interface ICard {
 Тип для определения способа оплаты
 
 ```
-export type TPaymentMethod = 'cash' | 'card';
+type TPaymentMethod = 'cash' | 'card';
 ```
 
 Заказ
 
 ```
-export interface IOrder {
+interface IOrder {
 	payment: TPaymentMethod;
 	email: string;
 	phone: string;
@@ -77,7 +77,7 @@ export interface IOrder {
 Интерфейс для списка карточек на странице
 
 ```
-export interface ICardList {
+interface ICardList {
 	items: ICard[];
 }
 ```
@@ -85,25 +85,25 @@ export interface ICardList {
 Данные для отображения корзины
 
 ```
-export type TBasketList = Pick<IOrder, 'items' | 'total'>;
+type TBasketList = Pick<IOrder, 'items' | 'total'>;
 ```
 
 Данные для форм оформления заказа. Отделение адресных данных и контактных
 
 ```
-export type TOrderAddress = Pick<IOrder, 'payment' | 'address'>;
+type TOrderAddress = Pick<IOrder, 'payment' | 'address'>;
 
-export type TOrderContacts = Pick<IOrder, 'email' | 'phone'>;
+type TOrderContacts = Pick<IOrder, 'email' | 'phone'>;
 ```
 
 Тип, описывающий ошибки валидации форм
 ```
-export type FormErrors = Partial<Record<keyof IOrder, string>>;
+type FormErrors = Partial<Record<keyof IOrder, string>>;
 ```
 
 Интерфейс для отображения успешного оформления заказа
 ```
-export interface ISuccessOrder {
+interface ISuccessOrder {
 	id: string;
 	total: number;
 }
@@ -111,9 +111,20 @@ export interface ISuccessOrder {
 ## Архитектура приложения
 
 В данном проекте используется паттерн MVP. Код разделен на слои:
-- слой представления отвечает за отображение данных на странице
-- слой данных отвечает за хранение и изменение данными приложения
-- презентер отвечает за связь представленных данных
+
+- Слой представления (View)
+Этот слой отвечает за отображение данных и обработку пользовательского ввода, но не содержит бизнес-логики.
+К нему относятся Basket.ts, Form.ts, Modal.ts, Success.ts, Card.ts, Page.ts.
+Все эти файлы представляют собой классы, расширяющие UIComponent.
+
+- Слой модели (Model)
+Этот слой управляет бизнес-логикой, состоянием приложения и данными.
+  К нему относятся api.ts, AppData.ts, WebLarekApi.ts.
+Эти файлы отвечают за работу с данными и API.
+- Слой презентера (Presenter)
+Этот слой управляет логикой отображения и взаимодействием между View и Model.
+  К нему относятся events.ts, Component.ts, UIComponent.ts,ContactsForm.ts, OrderForm.ts.
+Эти файлы содержат обработчики событий и связывают View и Model.
 
 ### Описание базовых классов
 
