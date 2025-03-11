@@ -107,9 +107,12 @@ export type TOrderContacts = Pick<IOrder, 'email' | 'phone'>;
 export type FormErrors = Partial<Record<keyof IOrder, string>>;
 ```
 
-Данные для отображения успешного оформления заказа
+Интерфейс для отображения успешного оформления заказа
 ```
-export type TSuccessOrder = Pick<IOrder, 'total'>;
+export interface ISuccessOrder {
+	id: string;
+	total: number;
+}
 ```
 ## Архитектура приложения
 
