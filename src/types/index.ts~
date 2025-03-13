@@ -15,11 +15,7 @@ export interface IOrder {
 	phone: string;
 	address: string;
 	total: number;
-	items: ICard[];
-}
-
-export interface ICardList {
-	items: ICard[];
+	items: string[];
 }
 
 export type TBasketList = Omit<IOrder, 'items' | 'total'>;

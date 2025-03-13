@@ -18,17 +18,13 @@ export interface IOrder {
 	items: string[];
 }
 
-export interface ICardList {
-	items: ICard[];
-}
-
 export type TBasketList = Omit<IOrder, 'items' | 'total'>;
 
 export type TOrderAddress = Pick<IOrder, 'payment' | 'address'>;
 
 export type TOrderContacts = Pick<IOrder, 'email' | 'phone'>;
 
-export type FormErrors = Partial<Record<keyof IOrder, string>>;
+export type FormErrors = Partial<Record<keyof TBasketList, string>>;
 
 export interface ISuccessOrder {
 	id: string;

@@ -1,10 +1,4 @@
-import {
-	FormErrors,
-	IBasket,
-	ICard,
-	TBasketList,
-	TPaymentMethod,
-} from '../types';
+import { FormErrors, IBasket, ICard, TBasketList, TPaymentMethod } from '../types';
 import { IEvents } from './base/events';
 
 export class AppData {
