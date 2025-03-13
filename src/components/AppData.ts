@@ -1,5 +1,4 @@
 import { IBasket, ICard, TBasketList, TPaymentMethod } from '../types';
-import { EMAIL_REGEXP, TEL_REGEXP } from '../utils/constants';
 import { IEvents } from './base/events';
 
 export class AppData {
@@ -74,6 +73,11 @@ export class AppData {
 	}
 
 	validateContactsForm() {
+		const EMAIL_REGEXP =
+			/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+		const TEL_REGEXP =
+			/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im;
+
 		const errors: typeof this.formErrors = {};
 		if (!this.order.email) {
 			errors.email = 'Необходимо указать email';
