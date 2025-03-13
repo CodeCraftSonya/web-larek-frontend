@@ -2,7 +2,7 @@ import {
 	FormErrors,
 	IBasket,
 	ICard,
-	TBasketList,
+	TOrderInfo,
 	TPaymentMethod,
 } from '../types';
 import { IEvents } from './base/events';
@@ -14,7 +14,7 @@ export class AppData {
 		items: [],
 		total: 0,
 	};
-	order: TBasketList = {
+	order: TOrderInfo = {
 		email: '',
 		phone: '',
 		address: '',
@@ -60,7 +60,7 @@ export class AppData {
 		this.order.payment = method;
 	}
 
-	setOrderField(field: keyof TBasketList, value: string) {
+	setOrderField(field: keyof TOrderInfo, value: string) {
 		if (field === 'payment') {
 			this.setPayment(value as TPaymentMethod);
 		} else {

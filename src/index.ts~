@@ -12,7 +12,7 @@ import { Success } from './components/common/Success';
 import { API_URL, CDN_URL } from './utils/constants';
 import { cloneTemplate, ensureElement } from './utils/utils';
 import { ContactsForm } from './components/ContactsForm';
-import { ICard, TOrderInfo } from './types';
+import { ICard, TBasketList } from './types';
 
 const api = new WebLarekAPI(CDN_URL, API_URL);
 
@@ -124,7 +124,7 @@ events.on('order:submit', () => {
 
 events.on(
 	/^order\..*:change$/,
-	(data: { field: keyof TOrderInfo; value: string }) => {
+	(data: { field: keyof TBasketList; value: string }) => {
 		appData.setOrderField(data.field, data.value);
 		appData.validateOrderForm();
 	}
@@ -132,13 +132,13 @@ events.on(
 
 events.on(
 	/^contacts\..*:change$/,
-	(data: { field: keyof TOrderInfo; value: string }) => {
+	(data: { field: keyof TBasketList; value: string }) => {
 		appData.setOrderField(data.field, data.value);
 		appData.validateContactsForm();
 	}
 );
 
-events.on('orderFormErrors:change', (error: Partial<TOrderInfo>) => {
+events.on('orderFormErrors:change', (error: Partial<TBasketList>) => {
 	const { payment, address } = error;
 	const formIsValid = !payment && !address;
 	orderForm.valid = formIsValid;
@@ -149,7 +149,7 @@ events.on('orderFormErrors:change', (error: Partial<TOrderInfo>) => {
 	}
 });
 
-events.on('contactsFormErrors:change', (error: Partial<TOrderInfo>) => {
+events.on('contactsFormErrors:change', (error: Partial<TBasketList>) => {
 	const { email, phone } = error;
 	const formIsValid = !email && !phone;
 	contactsForm.valid = formIsValid;

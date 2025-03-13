@@ -18,20 +18,23 @@ export interface IOrder {
 	items: string[];
 }
 
-export type TBasketList = Omit<IOrder, 'items' | 'total'>;
+export interface IBasket {
+	items: string[];
+	total: number;
+}
+
+export type TOrderInfo = Pick<
+	IOrder,
+	'payment' | 'email' | 'phone' | 'address'
+>;
 
 export type TOrderAddress = Pick<IOrder, 'payment' | 'address'>;
 
 export type TOrderContacts = Pick<IOrder, 'email' | 'phone'>;
 
-export type FormErrors = Partial<Record<keyof TBasketList, string>>;
+export type FormErrors = Partial<Record<keyof TOrderInfo, string>>;
 
 export interface ISuccessOrder {
 	id: string;
-	total: number;
-}
-
-export interface IBasket {
-	items: string[];
 	total: number;
 }
