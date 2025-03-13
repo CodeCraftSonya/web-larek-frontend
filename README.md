@@ -279,13 +279,11 @@ actions: ISuccessActions — объект с колбэком onClick для з�
 </details>
 <details>
     <summary><strong>Класс ContactsForm</strong></summary>
-    <p>A well-structured product to create a world-class knowledge base for your customers and employees. Content producers get the power, whereas content consumers get the simplicity.</p>
-    <h4>Core parts</h4>
+    <p>Класс ContactsForm управляет формой ввода контактных данных пользователя. Он наследуется от Form и обрабатывает ввод электронной почты и телефона.</p>
+    <h4>Методы</h4>
     <ul>
-        <li>Knowledge base portal</li>
-        <li>Knowledge base site</li>
-        <li>Knowledge base widget</li>
-        <li>API documentation</li>
+        <li><b>set email(value: string)</b> Устанавливает значение email в поле ввода.</li>
+<li><b>set phone(value: string)</b> Устанавливает значение телефона в поле ввода.</li>
     </ul>
 </details>
 <details>
