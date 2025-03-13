@@ -70,22 +70,26 @@ interface IOrder {
 	phone: string;
 	address: string;
 	total: number;
-	items: ICard[];
-}
-```
-
-Интерфейс для списка карточек на странице
-
-```
-interface ICardList {
-	items: ICard[];
+	items: string[];
 }
 ```
 
 Данные для отображения корзины
 
 ```
-type TBasketList = Pick<IOrder, 'items' | 'total'>;
+interface IBasket {
+	items: string[];
+	total: number;
+}
+```
+
+Основные данные заказа
+
+```
+type TOrderInfo = Pick<
+	IOrder,
+	'payment' | 'email' | 'phone' | 'address'
+>;
 ```
 
 Данные для форм оформления заказа. Отделение адресных данных и контактных
@@ -98,7 +102,7 @@ type TOrderContacts = Pick<IOrder, 'email' | 'phone'>;
 
 Тип, описывающий ошибки валидации форм
 ```
-type FormErrors = Partial<Record<keyof IOrder, string>>;
+type FormErrors = Partial<Record<keyof TOrderInfo, string>>;
 ```
 
 Интерфейс для отображения успешного оформления заказа
@@ -238,7 +242,108 @@ actions: ISuccessActions — объект с колбэком onClick для з�
 
 ### Остальные классы
 
+<details>
+    <summary><strong>Класс AppData</strong></summary>
+    <p>A well-structured product to create a world-class knowledge base for your customers and employees. Content producers get the power, whereas content consumers get the simplicity.</p>
+    <h4>Core parts</h4>
+    <ul>
+        <li>Knowledge base portal</li>
+        <li>Knowledge base site</li>
+        <li>Knowledge base widget</li>
+        <li>API documentation</li>
+    </ul>
+</details>
+<details>
+    <summary><strong>Класс AppData</strong></summary>
+    <p>A well-structured product to create a world-class knowledge base for your customers and employees. Content producers get the power, whereas content consumers get the simplicity.</p>
+    <h4>Core parts</h4>
+    <ul>
+        <li>Knowledge base portal</li>
+        <li>Knowledge base site</li>
+        <li>Knowledge base widget</li>
+        <li>API documentation</li>
+    </ul>
+</details>
+<details>
+    <summary><strong>Класс AppData</strong></summary>
+    <p>A well-structured product to create a world-class knowledge base for your customers and employees. Content producers get the power, whereas content consumers get the simplicity.</p>
+    <h4>Core parts</h4>
+    <ul>
+        <li>Knowledge base portal</li>
+        <li>Knowledge base site</li>
+        <li>Knowledge base widget</li>
+        <li>API documentation</li>
+    </ul>
+</details>
+<details>
+    <summary><strong>Класс AppData</strong></summary>
+    <p>A well-structured product to create a world-class knowledge base for your customers and employees. Content producers get the power, whereas content consumers get the simplicity.</p>
+    <h4>Core parts</h4>
+    <ul>
+        <li>Knowledge base portal</li>
+        <li>Knowledge base site</li>
+        <li>Knowledge base widget</li>
+        <li>API documentation</li>
+    </ul>
+</details>
+<details>
+    <summary><strong>Класс AppData</strong></summary>
+    <p>A well-structured product to create a world-class knowledge base for your customers and employees. Content producers get the power, whereas content consumers get the simplicity.</p>
+    <h4>Core parts</h4>
+    <ul>
+        <li>Knowledge base portal</li>
+        <li>Knowledge base site</li>
+        <li>Knowledge base widget</li>
+        <li>API documentation</li>
+    </ul>
+</details>
 
+<details>
+    <summary><strong>Класс WebLarekAPI</strong></summary>
+    <p>Отвечает за взаимодействие с API интернет-магазина. Он предоставляет методы для получения списка товаров, информации о конкретном товаре и оформления заказа.</p>
+    <h4>Методы</h4>
+    <ul>
+        <li><b>getProductList()</b>
+Получает список всех товаров.
+Отправляет GET-запрос на /product.
+Возвращает массив объектов ICard, дополняя их полем image с корректным URL изображения.</li>
+        <li><b>getProduct(id: string)</b>
+Получает информацию о конкретном товаре по его id.
+Отправляет GET-запрос на /product/{id}.
+Возвращает объект ICard, добавляя корректный URL изображения.</li>
+        <li><b>createOrder(order: IOrder)</b>
+Создаёт заказ на основе переданных данных.
+Отправляет POST-запрос на /order с телом order.
+Возвращает ISuccessOrder, содержащий информацию о сформированном заказе.</li>
+    </ul>
+</details>
+
+#### Класс AppData
+#### Класс Card
+#### Класс ContactsForm
+#### Класс OrderForm
+#### Класс Page
+
+#### Класс WebLarekAPI
+Отвечает за взаимодействие с API интернет-магазина. Он предоставляет методы для получения списка товаров, информации о конкретном товаре и оформления заказа.
+
+- cdn: string – базовый URL для загрузки изображений товаров.
+- baseUrl: string – базовый URL API.
+- options?: RequestInit – необязательные настройки запросов.
+- 
+Методы
+- getProductList()
+Получает список всех товаров.
+Отправляет GET-запрос на /product.
+Возвращает массив объектов ICard, дополняя их полем image с корректным URL изображения.
+- getProduct(id: string)
+Получает информацию о конкретном товаре по его id.
+Отправляет GET-запрос на /product/{id}.
+Возвращает объект ICard, добавляя корректный URL изображения.
+- createOrder(order: IOrder)
+Создаёт заказ на основе переданных данных.
+Отправляет POST-запрос на /order с телом order.
+Возвращает ISuccessOrder, содержащий информацию о сформированном заказе.
 
 
 
