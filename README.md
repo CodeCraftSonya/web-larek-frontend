@@ -297,13 +297,12 @@ actions: ISuccessActions — объект с колбэком onClick для з�
 </details>
 <details>
     <summary><strong>Класс Page</strong></summary>
-    <p>A well-structured product to create a world-class knowledge base for your customers and employees. Content producers get the power, whereas content consumers get the simplicity.</p>
-    <h4>Core parts</h4>
+    <p>Класс Page управляет основными элементами страницы, включая счетчик товаров в корзине, каталог товаров и блокировку страницы. Он наследуется от UIComponent и предоставляет удобные методы для обновления интерфейса.</p>
+    <h4>Методы</h4>
     <ul>
-        <li>Knowledge base portal</li>
-        <li>Knowledge base site</li>
-        <li>Knowledge base widget</li>
-        <li>API documentation</li>
+        <li><b>set counter(value: number)</b> Устанавливает и отображает количество товаров в корзине.</li>
+<li><b>set catalog(items: HTMLElement[])</b> Обновляет содержимое каталога, заменяя старые элементы новыми.</li>
+<li><b>set locked(value: boolean)</b> Блокирует или разблокирует страницу, добавляя или убирая класс page__wrapper_locked.</li>
     </ul>
 </details>
 

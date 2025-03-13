@@ -1,6 +1,6 @@
-import { View } from './base/Component';
 import { ensureElement } from '../utils/utils';
 import { IEvents } from './base/events';
+import { UIComponent } from './base/UIComponent';
 
 interface IPage {
 	counter: number;
@@ -8,7 +8,7 @@ interface IPage {
 	locked: boolean;
 }
 
-export class Page extends View<IPage> {
+export class Page extends UIComponent<IPage> {
 	protected _counter: HTMLElement;
 	protected _catalog: HTMLElement;
 	protected _wrapper: HTMLElement;
