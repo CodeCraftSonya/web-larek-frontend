@@ -244,13 +244,19 @@ actions: ISuccessActions — объект с колбэком onClick для з�
 
 <details>
     <summary><strong>Класс AppData</strong></summary>
-    <p>A well-structured product to create a world-class knowledge base for your customers and employees. Content producers get the power, whereas content consumers get the simplicity.</p>
-    <h4>Core parts</h4>
+    <p>Класс AppData управляет данными приложения, включая список товаров, данные о выбранном товаре, корзину покупок, информацию о заказе, валидацию форм заказа и контактов</p>
+    <h4>Методы</h4>
     <ul>
-        <li>Knowledge base portal</li>
-        <li>Knowledge base site</li>
-        <li>Knowledge base widget</li>
-        <li>API documentation</li>
+        <li><b>setItems(items: ICard[])</b> Задает список товаров и отправляет событие 'items:change'</li>
+        <li><b>setPreview(item: ICard)</b> Устанавливает товар для предпросмотра и отправляет событие 'preview:change'</li>
+        <li><b>isInBasket(item: ICard)</b> Проверяет, находится ли товар в корзине.</li>
+        <li><b>removeFromBasket(item: ICard)</b> Удаляет товар из корзины, обновляет сумму и отправляет событие 'basket:change'</li>
+<li><b>clearBasket()</b> Очищает корзину и отправляет событие 'basket:change'</li>
+        <li><b>setPayment(method: TPaymentMethod)</b> Устанавливает способ оплаты.</li>
+        <li><b>setOrderField(field: keyof TOrderInfo, value: string)</b> Обновляет данные заказа (контакты, адрес, способ оплаты).</li>
+        <li><b>validateOrderForm()</b> Проверяет заполненность адреса в заказе. Возвращает true, если ошибок нет.</li>
+<li><b>validateContactsForm()</b> Проверяет email и телефон по регулярным выражениям. Возвращает true, если ошибок нет.</li>
+        <li><b>clearOrder()</b> Очищает данные заказа.</li>
     </ul>
 </details>
 <details>
@@ -258,10 +264,10 @@ actions: ISuccessActions — объект с колбэком onClick для з�
     <p>A well-structured product to create a world-class knowledge base for your customers and employees. Content producers get the power, whereas content consumers get the simplicity.</p>
     <h4>Core parts</h4>
     <ul>
-        <li>Knowledge base portal</li>
-        <li>Knowledge base site</li>
-        <li>Knowledge base widget</li>
-        <li>API documentation</li>
+        <li><b></b></li>
+        <li><b></b></li>
+        <li><b></b></li>
+        <li><b></b></li>
     </ul>
 </details>
 <details>
