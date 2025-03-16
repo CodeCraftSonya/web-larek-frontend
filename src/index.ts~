@@ -6,7 +6,7 @@ import { OrderForm } from './components/OrderForm';
 import { Page } from './components/Page';
 import { WebLarekAPI } from './components/WebLarekApi';
 import { EventEmitter } from './components/base/events';
-import { Basket } from './components/common/Basket';
+import { Basket } from './components/Basket';
 import { Modal } from './components/common/Modal';
 import { Success } from './components/common/Success';
 import { API_URL, CDN_URL } from './utils/constants';
@@ -77,11 +77,6 @@ events.on('preview:change', (item: ICard) => {
 	});
 
 	card.button = appData.isInBasket(item) ? 'Удалить из корзины' : 'В корзину';
-
-	const basketItemsWithIndex = appData.getBasketItemsWithIndex();
-	basketItemsWithIndex.forEach((basketItem) => {
-		console.log(`Товар #${basketItem.index}: ${basketItem.id}`);
-	});
 
 	modal.render({ content: card.render(item) });
 });

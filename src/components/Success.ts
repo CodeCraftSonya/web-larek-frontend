@@ -1,6 +1,6 @@
-import { UIComponent } from '../base/UIComponent';
-import { IEvents } from '../base/events';
-import { ensureElement } from '../../utils/utils';
+import { UIComponent } from './base/UIComponent';
+import { IEvents } from './base/events';
+import { ensureElement } from '../utils/utils';
 
 interface ISuccess {
 	total: number;
