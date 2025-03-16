@@ -37,6 +37,13 @@ export class Basket extends UIComponent<IBasketView> {
 
 	set items(items: HTMLElement[]) {
 		if (items.length) {
+			items.forEach((item, index) => {
+				const indexElement = item.querySelector('.basket__item-index');
+				if (indexElement) {
+					indexElement.textContent = (index + 1).toString();
+				}
+			});
+
 			this._list.replaceChildren(...items);
 			this.toggleButton(true);
 		} else {

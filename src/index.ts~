@@ -12,7 +12,7 @@ import { Success } from './components/common/Success';
 import { API_URL, CDN_URL } from './utils/constants';
 import { cloneTemplate, ensureElement } from './utils/utils';
 import { ContactsForm } from './components/ContactsForm';
-import { ICard, TBasketList } from './types';
+import { ICard, TOrderInfo } from './types';
 
 const api = new WebLarekAPI(CDN_URL, API_URL);
 
@@ -77,6 +77,12 @@ events.on('preview:change', (item: ICard) => {
 	});
 
 	card.button = appData.isInBasket(item) ? 'Удалить из корзины' : 'В корзину';
+
+	const basketItemsWithIndex = appData.getBasketItemsWithIndex();
+	basketItemsWithIndex.forEach((basketItem) => {
+		console.log(`Товар #${basketItem.index}: ${basketItem.id}`);
+	});
+
 	modal.render({ content: card.render(item) });
 });
 
@@ -124,7 +130,7 @@ events.on('order:submit', () => {
 
 events.on(
 	/^order\..*:change$/,
-	(data: { field: keyof TBasketList; value: string }) => {
+	(data: { field: keyof TOrderInfo; value: string }) => {
 		appData.setOrderField(data.field, data.value);
 		appData.validateOrderForm();
 	}
@@ -132,13 +138,13 @@ events.on(
 
 events.on(
 	/^contacts\..*:change$/,
-	(data: { field: keyof TBasketList; value: string }) => {
+	(data: { field: keyof TOrderInfo; value: string }) => {
 		appData.setOrderField(data.field, data.value);
 		appData.validateContactsForm();
 	}
 );
 
-events.on('orderFormErrors:change', (error: Partial<TBasketList>) => {
+events.on('orderFormErrors:change', (error: Partial<TOrderInfo>) => {
 	const { payment, address } = error;
 	const formIsValid = !payment && !address;
 	orderForm.valid = formIsValid;
@@ -149,7 +155,7 @@ events.on('orderFormErrors:change', (error: Partial<TBasketList>) => {
 	}
 });
 
-events.on('contactsFormErrors:change', (error: Partial<TBasketList>) => {
+events.on('contactsFormErrors:change', (error: Partial<TOrderInfo>) => {
 	const { email, phone } = error;
 	const formIsValid = !email && !phone;
 	contactsForm.valid = formIsValid;

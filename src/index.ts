@@ -77,6 +77,7 @@ events.on('preview:change', (item: ICard) => {
 	});
 
 	card.button = appData.isInBasket(item) ? 'Удалить из корзины' : 'В корзину';
+
 	modal.render({ content: card.render(item) });
 });
 
