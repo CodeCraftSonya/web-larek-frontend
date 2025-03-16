@@ -38,9 +38,11 @@ export class Basket extends UIComponent<IBasketView> {
 	set items(items: HTMLElement[]) {
 		if (items.length) {
 			items.forEach((item, index) => {
-				const indexElement = item.querySelector('.basket__item-index');
+				const indexElement = item.querySelector(
+					'.basket__item-index'
+				) as HTMLElement;
 				if (indexElement) {
-					indexElement.textContent = (index + 1).toString();
+					this.setText(indexElement, index + 1);
 				}
 			});
 
